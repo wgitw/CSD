@@ -24,6 +24,9 @@ def process_audio(request):
             # concatenate the audio files
             combined_audio = audio1 + audio2
 
+            # export the concatenated audio as a new file
+            file_handle = combined_audio.export("combined.wav", format="wav")
+            
             # 성공적으로 파일을 받았을 때 200 OK 응답을 반환합니다.
             return HttpResponse(status=200)
 

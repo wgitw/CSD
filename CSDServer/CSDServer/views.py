@@ -4,8 +4,10 @@ import requests
 import traceback
 import os
 from pydub import AudioSegment
+import librosa, librosa.display
 
 
+# m4a -> wav -> spectrogram
 @csrf_exempt
 def process_audio(request):
     print("process_audio")
@@ -26,7 +28,13 @@ def process_audio(request):
 
             # export the concatenated audio as a new file
             file_handle = combined_audio.export("combined.wav", format="wav")
-            
+
+            # paths.append(file_path)
+            sig, sr = librosa.load(file_handle, sr=22050)
+
+
+
+
             # 성공적으로 파일을 받았을 때 200 OK 응답을 반환합니다.
             return HttpResponse(status=200)
 

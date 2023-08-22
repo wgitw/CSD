@@ -32,6 +32,28 @@ def process_audio(request):
             # paths.append(file_path)
             sig, sr = librosa.load(file_handle, sr=22050)
 
+            # 에너지 평균 구하기
+            sum = 0
+            for i in range(0, sig.shape[0]):
+                sum += sig[i] ** 2
+            mean = sum / sig.shape[0]
+
+            # 피크인덱스 찾기
+            for i in range(0, sig.shape[0]):
+                if (sig[i] ** 2 >= mean):
+                    peekIndex = i
+                    break
+
+            START_LEN = 1102
+            END_LEN = 20948
+            if peekIndex > 1102:
+                print(peekIndex)
+                startPoint = peekIndex - START_LEN
+                endPoint = peekIndex + 22050
+            else:
+                print(peekIndex)
+                startPoint = peekIndex
+                endPoint = peekIndex + END_LEN
 
 
 

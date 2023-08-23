@@ -2,8 +2,9 @@ import traceback
 
 import librosa
 import librosa.display
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
 
 from django.http import HttpResponse, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
@@ -11,6 +12,8 @@ from pydub import AudioSegment
 
 FIG_SIZE = (15, 10)
 DATA_NUM = 30
+
+matplotlib.use('Agg')
 
 # m4a -> wav -> spectrogram
 @csrf_exempt
@@ -87,7 +90,15 @@ def process_audio(request):
             plt.figure(figsize=FIG_SIZE)
             librosa.display.specshow(log_spectrogram, sr=sr, hop_length=hop_length, cmap='magma')
 
+            # matplotlib 라이브러리를 사용하여 생성된 spectrogram 이미지를 jpg 형식으로 저장
+            image_path = 'static/images/' + 'test.jpg'
 
+            # save spectrogram image
+            # plt.savefig('static/images/' + file_handle[:name_end_pos] + '.jpg')
+            # spectrogram 이미지 저장
+            plt.savefig(image_path)
+
+            plt.close()
 
             # 성공적으로 파일을 받았을 때 200 OK 응답을 반환합니다.
             return HttpResponse(status=200)

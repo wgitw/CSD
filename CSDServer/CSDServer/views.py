@@ -8,7 +8,10 @@ import matplotlib.pyplot as plt
 
 from django.http import HttpResponse, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
+from matplotlib import image
 from pydub import AudioSegment
+from io import BytesIO
+
 
 FIG_SIZE = (15, 10)
 DATA_NUM = 30
@@ -100,8 +103,16 @@ def process_audio(request):
 
             plt.close()
 
-            # 성공적으로 파일을 받았을 때 200 OK 응답을 반환합니다.
-            return HttpResponse(status=200)
+            # 이미지를 바이트 형태로 변환하여 메모리에 저장
+            image_bytes = BytesIO()
+            image.save(image_bytes, format='JPEG')
+            image_bytes = image_bytes.getvalue()
+
+            # 이미지를 HttpResponse 객체에 첨부 파일로 반환
+            response = HttpResponse(image_bytes, content_type='image/jpeg')
+            response['Content-Disposition'] = 'inline; filename="spectrogram.jpeg"'
+            return response
+
 
     except Exception as e:
         print(traceback.format_exc())  # 예외 발생시 traceback 메시지 출력

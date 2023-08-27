@@ -5,6 +5,8 @@ import librosa.display
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import struct
+import json
 
 from django.http import HttpResponse, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
@@ -27,12 +29,23 @@ def process_audio(request):
         if request.method == 'POST':
             print("POST")
             # POST 요청에서 이미지 파일을 가져옵니다.
-            m4a_file = request.FILES['m4a']
+            # m4a_file = request.FILES['m4a']
+
+            # POST 요청에서 byteArray 데이터를 가져옵니다.
+            requestBody = json.loads(request.body)  # 안드로이드 앱에서 보낸 데이터를 가져옵니다.
+            byte_data = requestBody['recordData']
+            byte_array = bytes([struct.pack('b', x)[0] for x in byte_data])
+
+            with open('my_audio_file.aac', 'wb+') as destination:
+                for i in range(0, len(byte_array), 32):
+                    chunk = byte_array[i:i + 32]
+                    destination.write(chunk)
+
 
             # 소리 + 묵음
             # load the audio files
-            audio1 = AudioSegment.from_file(m4a_file, format="m4a")
-            audio2 = AudioSegment.from_file("slient.m4a", format="m4a")
+            audio1 = AudioSegment.from_file("my_audio_file.aac", format="aac")
+            audio2 = AudioSegment.from_file("silent.m4a", format="m4a")
 
             # concatenate the audio files
             combined_audio = audio1 + audio2

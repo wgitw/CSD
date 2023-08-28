@@ -1,3 +1,4 @@
+import subprocess
 import traceback
 
 import librosa
@@ -43,9 +44,16 @@ def process_audio(request):
 
 
             # 소리 + 묵음
+            # aac -> wav
+            input_file = "my_audio_file.aac"
+            output_file = "my_audio_file.wav"
+            # Run the ffmpeg command to convert the AAC file to WAV
+            subprocess.run(["ffmpeg", "-y", "-i", input_file, output_file])
+
+
             # load the audio files
-            audio1 = AudioSegment.from_file("my_audio_file.aac", format="aac")
-            audio2 = AudioSegment.from_file("silent.m4a", format="m4a")
+            audio1 = AudioSegment.from_file("my_audio_file.wav", format="wav")
+            audio2 = AudioSegment.from_file("silent.wav", format="wav")
 
             # concatenate the audio files
             combined_audio = audio1 + audio2

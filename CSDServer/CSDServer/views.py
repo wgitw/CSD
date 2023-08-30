@@ -9,9 +9,11 @@ import matplotlib.pyplot as plt
 import struct
 import json
 
-from django.http import HttpResponse, HttpResponseServerError
+import torch
+from PIL import Image
+from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from matplotlib import image
+from matplotlib import image, transforms
 from pydub import AudioSegment
 from io import BytesIO
 
@@ -21,7 +23,14 @@ DATA_NUM = 30
 
 matplotlib.use('Agg')
 
-# m4a -> wav -> spectrogram
+alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+         'w', 'x', 'y', 'z']
+# 음성 데이터의 샘플링 레이트, 채널 수, 샘플링 포맷 등을 정의합니다.
+SAMPLE_RATE = 44100
+CHANNELS = 1
+SAMPLE_WIDTH = 2
+
+# byteArray -> acc -> wav -> spectrogram / -> resnetModel -> result
 @csrf_exempt
 def process_audio(request):
     print("process_audio")
@@ -124,15 +133,35 @@ def process_audio(request):
 
             plt.close()
 
-            # 이미지를 바이트 형태로 변환하여 메모리에 저장
-            image_bytes = BytesIO()
-            image.save(image_bytes, format='JPEG')
-            image_bytes = image_bytes.getvalue()
+            # 모델 입히기
+            model = torch.load('djangoServer/resnetModel/resnet32.pth')
+            # switch resnetModel to evaluation mode
+            model.eval()
+            # define the image transforms
+            image_transforms = transforms.Compose([
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+            ])
 
-            # 이미지를 HttpResponse 객체에 첨부 파일로 반환
-            response = HttpResponse(image_bytes, content_type='image/jpeg')
-            response['Content-Disposition'] = 'inline; filename="spectrogram.jpeg"'
-            return response
+            # 이미지 열기
+            image = Image.open(image_path)
+            # apply the transforms to the test image
+            test_image_tensor = image_transforms(image)
+            # add batch dimension to the image tensor
+            test_image_tensor = test_image_tensor.unsqueeze(0)
+
+            # get the resnetModel's prediction
+            with torch.no_grad():
+                prediction = model(test_image_tensor)
+
+            # get the predicted class index
+            predicted_class_index = torch.argmax(prediction).item()
+
+            response = {'predicted_alphabet': alpha[predicted_class_index]}
+            # 예측값 알파벳 출력
+            print("post: ", response)
+            return JsonResponse(response)
 
 
     except Exception as e:

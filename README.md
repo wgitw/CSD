@@ -107,7 +107,7 @@ Back-Server
 │   │   ├── asgi.py
 │   │   ├── resnetModel
 │   │   │   └── resnet34.pth
-│   │   ├── settings.py
+│   │   ├── base.py
 │   │   ├── urls.py
 │   │   ├── views.py
 │   │   └── wsgi.py

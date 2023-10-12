@@ -118,6 +118,6 @@ Back-Server
 │       └── images
 │           └── test.jpg
 ├── README.md
-└── requirements.txt
+└── base.txt
 
 ```

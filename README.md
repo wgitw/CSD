@@ -42,8 +42,8 @@ wav 파일을 liborasa 라이브러리를 사용하여 시간-주파수 그래�
     1. pip install -r requirements.txt
     2. pip3 install -r requirements.txt
 4-1. 패키지 설치2
-    1. pip install matplotlib torch
-    2. pip3 install matplotlib torch
+    1. pip install matplotlib torch pydub
+    2. pip3 install matplotlib torch pydub
 5. cd CSDServer
 6. migration
     1. python manage.py makemigrations

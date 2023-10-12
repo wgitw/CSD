@@ -60,13 +60,13 @@ def process_audio(request):
 
             # load the audio files
             audio1 = AudioSegment.from_file("my_audio_file.wav", format="wav")
-            audio2 = AudioSegment.from_file("silent.wav", format="wav")
+            audio2 = AudioSegment.from_file("static/audio/silent.wav", format="wav")
 
             # concatenate the audio files
             combined_audio = audio1 + audio2
 
             # export the concatenated audio as a new file
-            file_handle = combined_audio.export("combined.wav", format="wav")
+            file_handle = combined_audio.export("static/audio/combined.wav", format="wav")
 
             # paths.append(file_path)
             sig, sr = librosa.load(file_handle, sr=22050)
@@ -138,7 +138,7 @@ def process_audio(request):
             plt.close()
 
             # 모델 입히기
-            model = torch.load('djangoServer/resnetModel/resnet32.pth')
+            model = torch.load('CSDServer/static/resnetModel/resnet34.pth')
             # switch resnetModel to evaluation mode
             model.eval()
             # define the image transforms

@@ -35,6 +35,7 @@ SAMPLE_WIDTH = 2
 # byteArray -> acc -> wav -> spectrogram / -> resnetModel -> result
 @csrf_exempt
 def process_audio(request):
+
     print("process_audio")
     logger.debug("process_audio")
 

@@ -178,8 +178,10 @@ def process_audio(request):
             return JsonResponse(response)
         else: # GET
             response_data = {'message': 'GET 요청이 왔습니다'}
+            logger.debug("GET 요청")
             return JsonResponse(response_data)
 
     except Exception as e:
         print(traceback.format_exc())  # 예외 발생시 traceback 메시지 출력
+        logger.debug("예외 발생 : 오류")
         return HttpResponseServerError()  # 500 Internal

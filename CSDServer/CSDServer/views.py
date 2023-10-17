@@ -15,10 +15,8 @@ from django.http import HttpResponseServerError, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from matplotlib import transforms
 from pydub import AudioSegment
-import logging
 from torchvision import transforms
 
-logger = logging.getLogger(__name__)
 
 FIG_SIZE = (15, 10)
 DATA_NUM = 30
@@ -37,19 +35,15 @@ SAMPLE_WIDTH = 2
 def process_audio(request):
 
     print("process_audio")
-    logger.debug("process_audio")
 
     try:
         if request.method == 'POST':
             print("POST")
-            logger.debug("POST")
 
             # POST 요청에서 byteArray 데이터를 가져옵니다.
             requestBody = json.loads(request.body)  # 안드로이드 앱에서 보낸 데이터를 가져옵니다.
             byte_data = requestBody['recordData']
             byte_array = bytes([struct.pack('b', x)[0] for x in byte_data])
-
-            logger.debug("requestBody 받음: %s", requestBody)
 
             with open('my_audio_file.aac', 'wb+') as destination:
                 for i in range(0, len(byte_array), 32):
@@ -174,15 +168,12 @@ def process_audio(request):
 
             # 예측값 알파벳 출력
             print("post: ", response)
-            logger.debug("process_audio", response)
 
             return JsonResponse(response)
         else: # GET
             response_data = {'message': 'GET 요청이 왔습니다'}
-            logger.debug("GET 요청")
             return JsonResponse(response_data)
 
     except Exception as e:
         print(traceback.format_exc())  # 예외 발생시 traceback 메시지 출력
-        logger.debug("예외 발생 : 오류")
         return HttpResponseServerError()  # 500 Internal

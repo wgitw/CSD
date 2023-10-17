@@ -11,12 +11,12 @@ import json
 
 import torch
 from PIL import Image
-from django.http import HttpResponse, HttpResponseServerError, JsonResponse
+from django.http import HttpResponseServerError, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from matplotlib import image, transforms
+from matplotlib import transforms
 from pydub import AudioSegment
-from io import BytesIO
 import logging
+from torchvision import transforms
 
 logger = logging.getLogger(__name__)
 
@@ -145,7 +145,7 @@ def process_audio(request):
             plt.close()
 
             # 모델 입히기
-            model = torch.load('CSDServer/static/resnetModel/resnet34.pth')
+            model = torch.load('static/resnetModel/resnet34.pth')
             # switch resnetModel to evaluation mode
             model.eval()
             # define the image transforms

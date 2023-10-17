@@ -40,16 +40,28 @@ def process_audio(request):
         if request.method == 'POST':
             print("POST")
 
-            # POST 요청에서 byteArray 데이터를 가져옵니다.
-            requestBody = json.loads(request.body)  # 안드로이드 앱에서 보낸 데이터를 가져옵니다.
-            byte_data = requestBody['recordData']
-            byte_array = bytes([struct.pack('b', x)[0] for x in byte_data])
+            # POST 요청에서 byteArray 데이터를 가져옵니다. 예외처리 추가
+            try:
+                requestBody = json.loads(request.body)  # 안드로이드 앱에서 보낸 데이터를 가져옵니다.
 
-            with open('my_audio_file.aac', 'wb+') as destination:
-                for i in range(0, len(byte_array), 32):
-                    chunk = byte_array[i:i + 32]
-                    destination.write(chunk)
+                if 'recordData' in requestBody:
+                    byte_data = requestBody['recordData']
+                    # byte_data가 예상대로 배열이 아닌 경우에 대한 예외 처리 추가
+                    if not isinstance(byte_data, list):
+                        raise ValueError('Invalid recordData format')
 
+                    byte_array = bytes([struct.pack('b', x)[0] for x in byte_data])
+
+                    with open('my_audio_file.aac', 'wb+') as destination:
+                        for i in range(0, len(byte_array), 32):
+                            chunk = byte_array[i:i + 32]
+                            destination.write(chunk)
+                else:
+                    raise ValueError('recordData is missing in the request')
+            except json.JSONDecodeError as e:
+                # JSON 파싱 예외 처리: 데이터가 JSON 형식이 아닌 경우
+                response_data = {'message': 'Invalid JSON format in the request'}
+                return JsonResponse(response_data)
 
             # 소리 + 묵음
             # aac -> wav
@@ -170,6 +182,7 @@ def process_audio(request):
             print("post: ", response)
 
             return JsonResponse(response)
+
         else: # GET
             response_data = {'message': 'GET 요청이 왔습니다'}
             return JsonResponse(response_data)

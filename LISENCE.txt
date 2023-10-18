@@ -1,0 +1,223 @@
+The following sets forth attribution notices for third party software that may be contained in this program.
+Please refer to the LICENSE.txt file in this program folder for each license copy.
+
+Python
+https://www.python.org/
+Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006 Python Software Foundation; All Rights Reserved
+PSF-2.0 License
+
+
+Django 
+https://github.com/django/django
+Copyright Django Software Foundation and individual contributors
+BSD 3-Clause "New" or "Revised" License
+
+
+Django REST framework
+https://github.com/encode/django-rest-framework
+Copyright 2011-present, Encode OSS Ltd
+BSD 3-Clause "New" or "Revised" License
+
+asgiref
+https://github.com/django/asgiref/	
+Copyright Django Software Foundation and individual contributors
+BSD 3-Clause "New" or "Revised" License
+
+asttokens	
+https://github.com/gristlabs/asttokens	
+Copyright property of respective owners
+Apache License 2.0
+
+backcall
+https://github.com/takluyver/backcall	
+Copyright 2014, Thomas Kluyver
+BSD 3-Clause "New" or "Revised" License
+
+Certifi
+https://github.com/certifi/python-certifi
+Copyright property of respective owners	
+Mozilla Public License 2.0
+
+cffi	
+https://github.com/cffi/cffi	
+Copyright 2005-2007, James Bielman <jamesjb@jamesjb.com>
+MIT License
+
+Cycler	
+http://github.com/matplotlib/cycler	
+Copyright 2015, matplotlib project
+BSD 3-Clause "New" or "Revised" License
+
+drf-yasg	https://github.com/axnsan12/drf-yasg	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2017 - 2019, Cristian V. <cristi@cvjd.me>
+
+executing	https://github.com/alexmojaki/executing	
+MIT License
+Copyright 2019 Alex Hall
+
+fonttools	http://github.com/fonttools/fonttools	
+MIT License
+Copyright 2017 Just van Rossum
+
+Internationalized Domain Names in Applications (IDNA)	https://github.com/kjd/idna	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2013-2020, Kim Davies
+
+Inflection	https://github.com/jinzhu/inflection	
+MIT License
+Copyright 2015 - Jinzhu
+
+IPython	https://github.com/ipython/ipython	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2001, Nathaniel Gray <n8gray@caltech.edu>
+Copyright 2008-Present, IPython Development Team
+Copyright 2001, Janko Hauser <jhauser@zscout.de>
+Copyright 2001-2007, Fernando Perez <fernando.perez@colorado.edu>
+
+Jedi	https://github.com/davidhalter/jedi	
+MIT License
+Copyright 2013 David Halter and others
+
+Joblib	https://github.com/joblib/joblib	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2008-2016, The joblib developers
+
+
+TorchLibrosa: PyTorch implementation of Librosa	https://github.com/qiuqiangkong/torchlibrosa	
+MIT License
+Copyright 2018-2021 Qiuqiang Kong
+
+lvmlite	https://github.com/numba/llvmlite	
+BSD 2-Clause "Simplified" License
+Copyright 2014-, Continuum Analytics, Inc.
+
+
+Matplotlib	https://github.com/matplotlib/matplotlib	
+Matplotlib License
+Copyright 2012- Matplotlib Development Team
+
+Matplotlib Inline Back-end for IPython and Jupyter	https://github.com/ipython/matplotlib-inline	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2019-2022, IPython Development Team.
+
+NumPy	https://github.com/numpy/numpy	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2005-2018, NumPy Developers.
+
+ckaging	https://github.com/pypa/packaging	
+BSD 2-Clause "Simplified" License
+Apache License 2.0
+Copyright Donald Stufft and individual contributors
+
+pandas	https://github.com/pandas-dev/pandas	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+
+Parso	https://github.com/davidhalter/parso	
+Python Software Foundation License 2.0
+MIT License
+Copyright 2013-2017 David Halter and others
+
+expect	https://github.com/pexpect/pexpect	
+ISC License
+Copyright 2013-2014, Pexpect development team
+Copyright 2012, Noah Spurrier <noah@noah.org>
+
+pickleshare	https://github.com/pickleshare/pickleshare	
+MIT License
+Copyright 2016 Ville Vainio
+
+Pillow	https://github.com/python-pillow/Pillow	
+Historical Permission Notice and Disclaimer
+Copyright 2010-2021 by Alex Clark and contributors
+
+thon Prompt Toolkit	https://github.com/prompt-toolkit/python-prompt-toolkit	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2014, Jonathan Slenders
+
+yprocess	https://github.com/pexpect/ptyprocess	
+ISC License
+Copyright 2013-2014, Pexpect development team
+Copyright 2012, Noah Spurrier <noah@noah.org>
+
+cparser	https://github.com/eliben/pycparser	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2008-2017, Eli Bendersky
+
+Pygments	https://github.com/pygments/pygments	
+BSD 2-Clause "Simplified" License
+Copyright 2006-2023 Georg Brandl and Contributors
+
+yParsing	https://github.com/pyparsing/pyparsing/	
+MIT License
+Copyright Paul McGuire
+
+ytz	https://github.com/stub42/pytz	
+MIT License
+Copyright 2003-2019 Stuart Bishop <stuart@stuartbishop.net>
+
+yYAML	https://github.com/yaml/pyyaml	
+MIT License
+Copyright 2017-2018 Ingy döt Net
+Copyright 2006-2016 Kirill Simonov
+
+Requests	https://github.com/psf/requests	
+Apache License 2.0
+Copyright 2018 Kenneth Reitz
+
+scikit-learn	https://github.com/scikit-learn/scikit-learn	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2007-2020 The scikit-learn developers
+
+SciPy	https://github.com/scipy/scipy	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2001-2002 Enthought, Inc.
+Copyright 2003-2019, SciPy Developers.
+
+ix	https://github.com/benjaminp/six	
+MIT License
+Copyright 2010-2019 Benjamin Peterson
+
+sqlparser	https://github.com/xwb1989/sqlparser	
+Apache License 2.0
+Copyright 2017 Google Inc.
+
+PyTorch	https://github.com/pytorch/pytorch	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2016- Facebook, Inc and All contributions
+
+torchvision	https://github.com/pytorch/vision	
+BSD 3-Clause "New" or "Revised" License
+Copyright Soumith Chintala 2016
+
+Traitlets	https://github.com/ipython/traitlets	
+BSD 3-Clause "New" or "Revised" License
+Copyright 2001-, IPython Development Team
+
+zdata	https://github.com/python/tzdata	
+Apache License 2.0
+Copyright 2020, Paul Ganssle (Google)
+
+uritemplate	https://github.com/python-hyper/uritemplate	
+Apache License 2.0
+Copyright Ian Stapleton Cordasco
+
+urllib3	https://github.com/urllib3/urllib3	
+MIT License
+Copyright 2008-2020 Andrey Petrov and contributors
+
+wcwidth	https://github.com/jquast/wcwidth	
+MIT License
+Copyright 2014 Jeff Quast <contact@jeffquast.com>
+
+zipp	https://github.com/jaraco/zipp	
+MIT License
+Copyright Jason R. Coombs
+
+json	https://github.com/trentm/json	
+MIT License
+Copyright 2014 Trent Mick.
+Copyright 2014 Joyent Inc.
+
+

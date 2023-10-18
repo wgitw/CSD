@@ -31,29 +31,46 @@ wav 파일을 liborasa 라이브러리를 사용하여 시간-주파수 그래�
 ## ⭐️ Install and Run
 
 1. clone [github 리포지토리 주소]
-2. 가상환경 생성
+2. cd CSD-Server/CSDServer
+3. 가상환경 생성
     1. python -m venv venv 또는 python3 -m venv venv
-3. 가상환경 실행
+4. 가상환경 실행
     1. Windows
         1. venv\Scripts\activate
     2. macOS 및 Linux
         1. source venv/bin/activate
-4. 패키지 설치
-    1. pip install -r requirements.txt
-    2. pip3 install -r requirements.txt
-4-1. 패키지 설치2
-    1. pip install matplotlib torch pydub
-    2. pip3 install matplotlib torch pydub
-5. cd CSDServer
-6. migration
-    1. python manage.py makemigrations
-    2. python manage.py migrate
-    
+5. pip 최신버전으로 업그레이드
+   python -m pip install --upgrade pip
     또는
-    
+   python3 -m pip install --upgrade pip
+6. 패키지 설치
+    1. pip install -r requirements/base.txt
+    2. pip3 install -r requirements/base.txt <br>
+7. secrets.json 파일 생성
+   ```bash
+   ├── CSDServer
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── asgi.py
+    │   ├── settings
+    │   ├── urls.py
+    │   ├── views.py
+    │   └── wsgi.py
+    ├── __init__.py
+    ├── manage.py
+    ├── requirements
+    ├── secrets.json
+    └── static
+    ```
+   django 프로젝트를 생성했을 때 settings.py 파일 안에 있는 SECRET_KEY를 가지고 
+    {"SECRET_KEY" : ( secret key 입력 )} 형태로 secrets.json 파일에 작성합니다. 
+8. migration
     1. python manage.py makemigrations
     2. python manage.py migrate
-7. 로컬 실행
+    또는
+    1. python3 manage.py makemigrations
+    2. python3 manage.py migrate
+10. 로컬 실행
     1. python manage.py runserver 또는 python3 manage.py runserver
 
 <br><br>
@@ -103,24 +120,33 @@ process_audio
 
 ## 🔗 Project Structure
   ```bash
-Back-Server
+CSDServer
 ├── CSDServer
-│   ├── CSDServer
-│   │   ├── init.py
-│   │   ├── asgi.py
-│   │   ├── resnetModel
-│   │   │   └── resnet34.pth
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings
+│   │   ├── __init__.py
 │   │   ├── base.py
-│   │   ├── urls.py
-│   │   ├── views.py
-│   │   └── wsgi.py
-│   ├── combined.wav
-│   ├── manage.py
-│   ├── silent.wav
-│   └── static
-│       └── images
-│           └── test.jpg
-├── README.md
-└── base.txt
+│   │   ├── development.py
+│   │   ├── local.py
+│   │   └── production.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── __init__.py
+├── manage.py
+├── requirements
+│   ├── base.txt
+│   ├── local.txt
+│   └── production.txt
+└── venv
+└── static
+    ├── audio
+    │   ├── combined.wav
+    │   └── silent.wav
+    ├── images
+    │   └── test.jpg
+    └── resnetModel
+        └── resnet34.pth
 
 ```

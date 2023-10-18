@@ -28,6 +28,10 @@ wav 파일을 liborasa 라이브러리를 사용하여 시간-주파수 그래�
 
 <br><br>
 
+## ⭐️ Service architecture
+![Section 2](https://github.com/CAP-JJANG/CSD-Server/assets/100428958/5ffc0946-3989-4b00-af7b-3255144bbe92)
+
+
 ## ⭐️ Install and Run
 
 1. clone [github 리포지토리 주소]

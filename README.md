@@ -28,7 +28,7 @@ wav 파일을 liborasa 라이브러리를 사용하여 시간-주파수 그래�
 
 <br><br>
 
-## ⭐️ Service architecture
+## 🔗 Service architecture
 ![Section 2](https://github.com/CAP-JJANG/CSD-Server/assets/100428958/acb1085a-0716-4191-9acf-5e6d17eab4c9)
 
 

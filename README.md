@@ -30,6 +30,7 @@ wav 파일을 liborasa 라이브러리를 사용하여 시간-주파수 그래�
 
 ## 🔗 Service architecture
 ![Section 2](https://github.com/CAP-JJANG/CSD-Server/assets/100428958/acb1085a-0716-4191-9acf-5e6d17eab4c9)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwgitw%2FCSD.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwgitw%2FCSD?ref=badge_shield)
 
 
 
@@ -155,3 +156,7 @@ CSDServer
         └── resnet34.pth
 
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwgitw%2FCSD.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwgitw%2FCSD?ref=badge_large)
